@@ -13,26 +13,20 @@ export default function Product({ product }) {
   return (
     <>
       <Head>
-        <title>${product.name}</title>
+        <title>{product.name}</title>
       </Head>
-      <h1>${product.name}</h1>
-      <p>${product.price}</p>
+      <h1>{product.name}</h1>
+      <p>{product.price}</p>
       <Link href="/products">Back</Link>
     </>
   )
 }
 
 // STEP 1: This function will be executed at the server before loading the page.
-export async function getServerSideProps(context) {
-    console.log(`Fetching Product ID: ${context.params['id']}`)
-    console.debug(`Fetching ${process.env.APIURL}products/${context.params['id']}`)
-    const ret = await fetch(`${process.env.APIURL}products/${context.params['id']}`)
-    const product = await ret.json()
-    console.log(product)
-    return {
-      props: {
-        product
-      }
-    }
-  
-  }
+export async function getServerSideProps({ params }) {
+  console.debug('params', params)
+  const res = await fetch(`${process.env.APIURL}products/${params.id}`)
+  const product = await res.json()
+  console.debug('product 1', product)
+  return { props: { product } }
+}

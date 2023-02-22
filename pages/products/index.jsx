@@ -2,10 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 
-export default function Home(props) {
-  const {products} = props;
-  if (!products) return (<div>Loading...</div>)
-  
+export default function Home({ products }) {
+
   function deleteProduct(id) {
     fetch(`${process.env.APIURL}products/${id}`,
       {
@@ -19,14 +17,6 @@ export default function Home(props) {
 
   }
 
-  const list = products.map((product) => (
-    <li key={product.id}>
-      <Link href={`/products/${product.id}`}>
-        {product.name}
-      </Link>
-    </li>
-  ))
-
   return (
     <>
       <Head>
@@ -35,12 +25,22 @@ export default function Home(props) {
       <h1>Products</h1>
       <table>
         <tbody>
-        <td>
-            {list}
-        </td>
-        <td>
-            <button onClick={() => deleteProduct(list._id)}>Delete</button>
-        </td>
+        {
+          products.map(product => {
+            return (
+              <tr key={product._id}>
+                <td>
+                  <Link href={`/products/${product._id}`}>
+                    {product.name}
+                  </Link>
+                </td>
+                <td>
+                  <button onClick={() => deleteProduct(product._id)}>Delete</button>
+                </td>
+              </tr>
+            )
+          })
+        }
       </tbody>
       </table>
       <p>
