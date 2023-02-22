@@ -13,10 +13,10 @@ export default function Product({ product }) {
   return (
     <>
       <Head>
-        <title>{product.name}</title>
+        <title>${product.name}</title>
       </Head>
-      <h1>{product.name}</h1>
-      <p>{product.price}</p>
+      <h1>${product.name}</h1>
+      <p>${product.price}</p>
       <Link href="/products">Back</Link>
     </>
   )
