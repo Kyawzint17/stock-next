@@ -52,6 +52,7 @@ export default function Home({ products }) {
 export async function getServerSideProps() {
   const res = await fetch(`${process.env.APIURL}products`)
   const products = await res.json()
+  console.log({ products })
   // console.debug('blog 1', blogs)
   return { props: { products } }
 }
