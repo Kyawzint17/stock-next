@@ -4,8 +4,8 @@ import { useEffect, useState } from 'react'
 
 export default function Home({ products }) {
 
-  function deleteProduct(id) {
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`,
+  async function deleteProduct(id) {
+    await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`,
       {
         method: 'DELETE'
       })

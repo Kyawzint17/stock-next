@@ -4,6 +4,13 @@ import Link from "next/link"
 // Step 2: This component is rendered from the server (Server-Side Rendering) SSR
 export default function Blog({ blog }) {
   console.log('blog 2', blog)
+  if (!blog) return (
+    <div>
+      <p>Blog not found</p>
+      <Link href="/blogs">Back</Link>
+      </div>
+  );
+
   return (
     <>
       <Head>
