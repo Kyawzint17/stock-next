@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 export default function Home({ products }) {
 
   function deleteProduct(id) {
-    fetch(`${process.env.APIURL}/products/${id}`,
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/${id}`,
       {
         method: 'DELETE'
       })
@@ -50,7 +50,7 @@ export default function Home({ products }) {
   )
 }
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.APIURL}products`)
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/products/`)
   const products = await res.json()
   // console.debug('blog 1', blogs)
   return { props: { products } }
