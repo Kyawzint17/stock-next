@@ -19,8 +19,9 @@ export default async function handler(req, res) {
   }
 }
 const productSchema = new Schema({
-  title: String,
-  content: String,
+  code: String,
+  name: String,
+  number : Number
 });
 console.log("Mongoose Models", models)
 const Product = models?.product || model('product', productSchema);

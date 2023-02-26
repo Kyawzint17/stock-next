@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react'
 export default function Home({ products }) {
 
   function deleteProduct(id) {
-    fetch(`${process.env.APIURL}products/${id}`,
+    fetch(`${process.env.APIURL}/products/${id}`,
       {
         method: 'DELETE'
       })
